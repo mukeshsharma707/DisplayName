@@ -4,20 +4,16 @@ import viteLogo from '/vite.svg'
 
 
 function App() {
-  const [firstname, setfirstname] = useState('');
-  const [lastname,setLastname]=useState('');
+
   const[fullname,setFullname]=useState('');
 
   const handleSubmit = (event)=>{
     event.preventDefault();
-    if(firstname==='' || lastname===''){
-      alert("Please fill out this field");
-    }
-    else{
+    
       const firstname=event.target.firstname.value;
     const lastname=event.target.lastname.value;
     setFullname(`${firstname} ${lastname}`)
-    }
+    
     
   }
 
