@@ -1,34 +1,45 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [firstname, setfirstname] = useState('');
+  const [lastname,setLastname]=useState('');
+  const[fullname,setFullname]=useState('');
+
+  const handleSubmit = (event)=>{
+    event.preventDefault();
+    if(firstname==='' || lastname===''){
+      alert("Please fill out this field");
+    }
+    else{
+      const firstname=event.target.firstname.value;
+    const lastname=event.target.lastname.value;
+    setFullname(`${firstname} ${lastname}`)
+    }
+    
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <div style={{ textAlign: 'center' }}>Full Name Display</div>
+<div>
+  <form onSubmit={handleSubmit}>
+    <label htmlFor="firstname">First Name: </label>
+    <input type="text" id="firstname" name="firstname" required />
+    <br /><br />
+
+    <label htmlFor="lastname">Last Name: </label>
+    <input type="text" id="lastname" name="lastname" required/>
+    <br /><br />
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<div>Full Name : {fullname}</div>
+
+         </>
   )
 }
 
